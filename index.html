@@ -1,0 +1,2399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>尿液结石风险因子评估项目介绍</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdmirror.com/npm/mathjax@3.2.2/es5/tex-svg.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .ppt-slide {
+          @apply relative w-[1280px] h-[720px] mx-auto p-[40px] box-border overflow-hidden mb-[40px] bg-white;
+        }
+      }
+    </style>
+    <style>
+      body {
+        font-family: 'Noto Sans SC', sans-serif;
+        color: #1f2937;
+      }
+      .gradient-bg {
+        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
+      }
+      .gradient-bg-medical {
+        background: linear-gradient(135deg, #0c4a6e 0%, #075985 50%, #0369a1 100%);
+      }
+      .gradient-bg-light {
+        background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+      }
+      .text-gradient {
+        background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .card-shadow {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      .icon-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .data-card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        border-left: 4px solid #0ea5e9;
+      }
+      .chapter-number {
+        font-size: 120px;
+        font-weight: 900;
+        opacity: 0.15;
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        color: #0ea5e9;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50 py-8">
+    <!-- 封面页 -->
+    <div class="ppt-slide !bg-gradient-to-br !from-sky-900 !via-sky-800 !to-blue-900" type="cover">
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-sky-400 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+      </div>
+      <div class="relative z-10 h-full flex flex-col justify-center">
+        <div class="mb-6">
+          <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium">
+            <i class="fas fa-flask mr-2"></i>医学检验项目
+          </span>
+        </div>
+        <h1 class="text-6xl font-bold text-white mb-6 leading-tight">
+          尿液结石风险因子评估
+        </h1>
+        <p class="text-2xl text-sky-100 mb-8 font-light">
+          数字化结石病靶向防治解决方案
+        </p>
+        <div class="flex items-center gap-8 text-white/80 text-lg">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-hospital"></i>
+            <span>杭州汉库医学检验所</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-microscope"></i>
+            <span>汉库医学检验所</span>
+          </div>
+        </div>
+        <div class="absolute bottom-10 left-10 right-10">
+          <div class="h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+          <p class="text-white/60 text-sm mt-4 text-center">ISO15189认证医学实验室 | 美国梅奥实验室指定检测技术</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 目录页 -->
+    <div class="ppt-slide" type="table_of_contents">
+      <div class="h-full flex flex-col">
+        <div class="mb-8">
+          <h2 class="text-4xl font-bold text-gray-800 mb-2">目录</h2>
+          <p class="text-gray-500">CONTENTS</p>
+        </div>
+        <div class="flex-1 grid grid-cols-2 gap-6">
+          <div class="group p-6 rounded-xl bg-gradient-to-br from-sky-50 to-white border border-sky-100 hover:shadow-lg transition-all cursor-pointer">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-xl bg-sky-500 flex items-center justify-center text-white text-2xl font-bold">01</div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">肾结石流行病学现状</h3>
+                <p class="text-gray-500 text-sm">中国肾结石发病与复发数据分析</p>
+              </div>
+            </div>
+          </div>
+          <div class="group p-6 rounded-xl bg-gradient-to-br from-blue-50 to-white border border-blue-100 hover:shadow-lg transition-all cursor-pointer">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-xl bg-blue-500 flex items-center justify-center text-white text-2xl font-bold">02</div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">国内外诊疗指南解读</h3>
+                <p class="text-gray-500 text-sm">EAU、AUA、CUA指南对代谢评估的要求</p>
+              </div>
+            </div>
+          </div>
+          <div class="group p-6 rounded-xl bg-gradient-to-br from-cyan-50 to-white border border-cyan-100 hover:shadow-lg transition-all cursor-pointer">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-xl bg-cyan-500 flex items-center justify-center text-white text-2xl font-bold">03</div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">常规检测与项目检测对比</h3>
+                <p class="text-gray-500 text-sm">尿液结石风险因子评估的技术优势</p>
+              </div>
+            </div>
+          </div>
+          <div class="group p-6 rounded-xl bg-gradient-to-br from-teal-50 to-white border border-teal-100 hover:shadow-lg transition-all cursor-pointer">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-xl bg-teal-500 flex items-center justify-center text-white text-2xl font-bold">04</div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">项目核心优势与临床价值</h3>
+                <p class="text-gray-500 text-sm">精准防治的临床应用价值</p>
+              </div>
+            </div>
+          </div>
+          <div class="group p-6 rounded-xl bg-gradient-to-br from-indigo-50 to-white border border-indigo-100 hover:shadow-lg transition-all cursor-pointer">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-xl bg-indigo-500 flex items-center justify-center text-white text-2xl font-bold">05</div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">临床应用案例</h3>
+                <p class="text-gray-500 text-sm">真实案例展示项目临床价值</p>
+              </div>
+            </div>
+          </div>
+          <div class="group p-6 rounded-xl bg-gradient-to-br from-violet-50 to-white border border-violet-100 hover:shadow-lg transition-all cursor-pointer">
+            <div class="flex items-start gap-4">
+              <div class="w-14 h-14 rounded-xl bg-violet-500 flex items-center justify-center text-white text-2xl font-bold">06</div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">合作展望</h3>
+                <p class="text-gray-500 text-sm">携手共建结石病精准防治体系</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 章节页：肾结石流行病学现状 -->
+    <div class="ppt-slide !bg-gradient-to-br !from-sky-900 !via-sky-800 !to-blue-900" type="chapter">
+      <div class="chapter-number">01</div>
+      <div class="h-full flex flex-col justify-center relative z-10">
+        <div class="mb-4">
+          <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">
+            CHAPTER 01
+          </span>
+        </div>
+        <h2 class="text-5xl font-bold text-white mb-4">肾结石流行病学现状</h2>
+        <p class="text-2xl text-sky-100">中国肾结石发病与复发数据分析</p>
+        <div class="mt-12 flex gap-8">
+          <div class="text-center">
+            <div class="text-5xl font-bold text-white mb-2">7.54%</div>
+            <div class="text-sky-200">全国患病率</div>
+          </div>
+          <div class="text-center">
+            <div class="text-5xl font-bold text-white mb-2">~2.3亿</div>
+            <div class="text-sky-200">患病人数</div>
+          </div>
+          <div class="text-center">
+            <div class="text-5xl font-bold text-white mb-2">50-90%</div>
+            <div class="text-sky-200">5-10年复发率</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 中国肾结石流行病学数据 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-6">
+          <h2 class="text-3xl font-bold text-gray-800">中国肾结石流行病学数据</h2>
+          <p class="text-gray-500 mt-1">基于2023年千万级体检数据及最新流行病学调查</p>
+        </div>
+        <div class="flex-1 grid grid-cols-3 gap-5">
+          <div class="col-span-2 space-y-4">
+            <div class="grid grid-cols-3 gap-4">
+              <div class="data-card">
+                <div class="text-4xl font-bold text-sky-600 mb-2">8.1%</div>
+                <div class="text-gray-600 text-sm mb-1">全国标化检出率</div>
+                <div class="text-gray-400 text-xs">2023年千万级体检数据</div>
+              </div>
+              <div class="data-card">
+                <div class="text-4xl font-bold text-blue-600 mb-2">10.7%</div>
+                <div class="text-gray-600 text-sm mb-1">男性检出率</div>
+                <div class="text-gray-400 text-xs">男性显著高于女性</div>
+              </div>
+              <div class="data-card">
+                <div class="text-4xl font-bold text-teal-600 mb-2">5.5%</div>
+                <div class="text-gray-600 text-sm mb-1">女性检出率</div>
+                <div class="text-gray-400 text-xs">性别差距逐渐缩小</div>
+              </div>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-5">
+              <h4 class="font-bold text-gray-700 mb-4"><i class="fas fa-chart-line text-sky-500 mr-2"></i>检出率呈持续上升趋势（2023年千万级体检数据）</h4>
+              <div id="trend-chart" style="width: 100%; height: 200px;"></div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-orange-50 rounded-xl p-4 border border-orange-100">
+                <div class="flex items-center gap-2 mb-2">
+                  <i class="fas fa-map-marker-alt text-orange-500"></i>
+                  <span class="font-bold text-gray-700">地域分布特点</span>
+                </div>
+                <p class="text-sm text-gray-600">南方高于北方，沿海高于内地，广东、广西、四川、浙江等地区患病率最高（5-10%以上）</p>
+              </div>
+              <div class="bg-purple-50 rounded-xl p-4 border border-purple-100">
+                <div class="flex items-center gap-2 mb-2">
+                  <i class="fas fa-users text-purple-500"></i>
+                  <span class="font-bold text-gray-700">人群特征</span>
+                </div>
+                <p class="text-sm text-gray-600">检出率随年龄增长而增加，60岁以上人群检出率高达12.5%</p>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl p-5 text-white">
+              <div class="text-center mb-4">
+                <div class="text-5xl font-bold mb-2">~1.1亿</div>
+                <div class="text-sky-100">中国肾结石患病人数</div>
+              </div>
+              <div class="h-px bg-white/30 my-4"></div>
+              <div class="text-sm text-sky-100">
+                <p class="mb-2">• 每年新增病例约150-200/10万</p>
+                <p class="mb-2">• 上尿路结石占95%以上</p>
+                <p>• 我国是世界三大结石高发地区之一</p>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-4 card-shadow">
+              <h4 class="font-bold text-gray-700 mb-3">高风险因素</h4>
+              <div class="space-y-2 text-sm">
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                  <span class="text-gray-600">高温作业环境</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                  <span class="text-gray-600">高盐高蛋白饮食</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                  <span class="text-gray-600">饮水不足</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                  <span class="text-gray-600">代谢综合征</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                  <span class="text-gray-600">家族史</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        var trendChart = echarts.init(document.getElementById('trend-chart'));
+        var trendOption = {
+          tooltip: { trigger: 'axis' },
+          grid: { left: '3%', right: '4%', bottom: '3%', top: '10%', containLabel: true },
+          xAxis: {
+            type: 'category',
+            data: ['2016', '2019', '2023'],
+            axisLine: { lineStyle: { color: '#ccc' } },
+            axisLabel: { color: '#666' }
+          },
+          yAxis: {
+            type: 'value',
+            name: '检出率(%)',
+            nameTextStyle: { color: '#666' },
+            axisLine: { lineStyle: { color: '#ccc' } },
+            axisLabel: { color: '#666' },
+            splitLine: { lineStyle: { color: '#eee' } }
+          },
+          series: [{
+            data: [7.54, 7.8, 8.1],
+            type: 'line',
+            smooth: true,
+            lineStyle: { color: '#0ea5e9', width: 3 },
+            itemStyle: { color: '#0ea5e9' },
+            areaStyle: {
+              color: {
+                type: 'linear',
+                x: 0, y: 0, x2: 0, y2: 1,
+                colorStops: [
+                  { offset: 0, color: 'rgba(14, 165, 233, 0.3)' },
+                  { offset: 1, color: 'rgba(14, 165, 233, 0.05)' }
+                ]
+              }
+            },
+            label: { show: true, position: 'top', color: '#0ea5e9', fontWeight: 'bold' }
+          }]
+        };
+        trendChart.setOption(trendOption);
+      </script>
+    </div>
+
+    <!-- 肾结石复发率与疾病负担 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-6">
+          <h2 class="text-3xl font-bold text-gray-800">肾结石复发率与疾病负担</h2>
+          <p class="text-gray-500 mt-1">高复发率是结石病防治的核心挑战</p>
+        </div>
+        <div class="flex-1 grid grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <div class="bg-gradient-to-br from-red-500 to-orange-500 rounded-xl p-6 text-white">
+              <h3 class="text-xl font-bold mb-4"><i class="fas fa-exclamation-triangle mr-2"></i>复发率数据</h3>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="text-center p-4 bg-white/20 rounded-lg">
+                  <div class="text-4xl font-bold mb-1">50%+</div>
+                  <div class="text-sm opacity-90">5年复发率</div>
+                </div>
+                <div class="text-center p-4 bg-white/20 rounded-lg">
+                  <div class="text-4xl font-bold mb-1">90%+</div>
+                  <div class="text-sm opacity-90">10年复发率</div>
+                </div>
+              </div>
+              <div class="mt-4 text-sm opacity-90">
+                <p>• 首次发作后，复发风险随时间持续增加</p>
+                <p>• 多次复发患者复发率更高</p>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 card-shadow">
+              <h4 class="font-bold text-gray-700 mb-4"><i class="fas fa-user-injured text-red-500 mr-2"></i>复发相关危险因素</h4>
+              <div class="grid grid-cols-2 gap-3 text-sm">
+                <div class="flex items-center gap-2 p-2 bg-red-50 rounded-lg">
+                  <i class="fas fa-calendar text-red-400"></i>
+                  <span class="text-gray-600">年轻发病（&lt;20岁）</span>
+                </div>
+                <div class="flex items-center gap-2 p-2 bg-red-50 rounded-lg">
+                  <i class="fas fa-male text-red-400"></i>
+                  <span class="text-gray-600">男性患者</span>
+                </div>
+                <div class="flex items-center gap-2 p-2 bg-red-50 rounded-lg">
+                  <i class="fas fa-weight text-red-400"></i>
+                  <span class="text-gray-600">BMI正常范围</span>
+                </div>
+                <div class="flex items-center gap-2 p-2 bg-red-50 rounded-lg">
+                  <i class="fas fa-dna text-red-400"></i>
+                  <span class="text-gray-600">家族史</span>
+                </div>
+                <div class="flex items-center gap-2 p-2 bg-red-50 rounded-lg">
+                  <i class="fas fa-expand text-red-400"></i>
+                  <span class="text-gray-600">结石&gt;2cm</span>
+                </div>
+                <div class="flex items-center gap-2 p-2 bg-red-50 rounded-lg">
+                  <i class="fas fa-clone text-red-400"></i>
+                  <span class="text-gray-600">多发性结石</span>
+                </div>
+                <div class="flex items-center gap-2 p-2 bg-red-50 rounded-lg">
+                  <i class="fas fa-arrows-alt-h text-red-400"></i>
+                  <span class="text-gray-600">双侧结石</span>
+                </div>
+                <div class="flex items-center gap-2 p-2 bg-red-50 rounded-lg">
+                  <i class="fas fa-procedures text-red-400"></i>
+                  <span class="text-gray-600">SWL治疗</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-white rounded-xl p-5 card-shadow">
+              <h4 class="font-bold text-gray-700 mb-4"><i class="fas fa-hospital-user text-blue-500 mr-2"></i>疾病负担</h4>
+              <div id="burden-chart" style="width: 100%; height: 220px;"></div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-blue-50 rounded-xl p-4 border border-blue-100">
+                <div class="flex items-center gap-2 mb-2">
+                  <i class="fas fa-heartbeat text-blue-500 text-xl"></i>
+                  <span class="font-bold text-gray-700">健康影响</span>
+                </div>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• 反复肾绞痛</li>
+                  <li>• 肾功能损害</li>
+                  <li>• 生活质量下降</li>
+                  <li>• 终末期肾病风险↑5%</li>
+                </ul>
+              </div>
+              <div class="bg-green-50 rounded-xl p-4 border border-green-100">
+                <div class="flex items-center gap-2 mb-2">
+                  <i class="fas fa-dollar-sign text-green-500 text-xl"></i>
+                  <span class="font-bold text-gray-700">经济负担</span>
+                </div>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• 反复住院费用</li>
+                  <li>• 多次手术费用</li>
+                  <li>• 误工损失</li>
+                  <li>• 长期随访成本</li>
+                </ul>
+              </div>
+            </div>
+            <div class="bg-gradient-to-r from-sky-500 to-blue-600 rounded-xl p-4 text-white">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-sm opacity-90 mb-1">60岁以上检出率</div>
+                  <div class="text-3xl font-bold">12.5%</div>
+                </div>
+                <i class="fas fa-users text-5xl opacity-30"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        var burdenChart = echarts.init(document.getElementById('burden-chart'));
+        var burdenOption = {
+          tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+          legend: { data: ['首次复发', '二次复发'], bottom: 0, textStyle: { fontSize: 11 } },
+          grid: { left: '3%', right: '4%', bottom: '15%', top: '5%', containLabel: true },
+          xAxis: {
+            type: 'category',
+            data: ['5年', '10年'],
+            axisLine: { lineStyle: { color: '#ccc' } },
+            axisLabel: { color: '#666' }
+          },
+          yAxis: {
+            type: 'value',
+            name: '复发率(%)',
+            nameTextStyle: { color: '#666', fontSize: 11 },
+            axisLine: { lineStyle: { color: '#ccc' } },
+            axisLabel: { color: '#666' },
+            splitLine: { lineStyle: { color: '#eee' } }
+          },
+          series: [
+            {
+              name: '首次复发',
+              type: 'bar',
+              data: [50, 90],
+              itemStyle: { color: '#0ea5e9', borderRadius: [4, 4, 0, 0] },
+              barWidth: '30%',
+              label: { show: true, position: 'top', color: '#0ea5e9', fontWeight: 'bold' }
+            },
+            {
+              name: '二次复发',
+              type: 'bar',
+              data: [25, 45],
+              itemStyle: { color: '#f97316', borderRadius: [4, 4, 0, 0] },
+              barWidth: '30%',
+              label: { show: true, position: 'top', color: '#f97316', fontWeight: 'bold' }
+            }
+          ]
+        };
+        burdenChart.setOption(burdenOption);
+      </script>
+    </div>
+<!-- 章节页：国内外诊疗指南解读 -->
+    <div class="ppt-slide !bg-gradient-to-br !from-blue-900 !via-blue-800 !to-indigo-900" type="chapter">
+      <div class="chapter-number">02</div>
+      <div class="h-full flex flex-col justify-center relative z-10">
+        <div class="mb-4">
+          <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">
+            CHAPTER 02
+          </span>
+        </div>
+        <h2 class="text-5xl font-bold text-white mb-4">国内外诊疗指南解读</h2>
+        <p class="text-2xl text-blue-100">EAU、AUA、CUA指南对代谢评估的要求</p>
+        <div class="mt-12 flex gap-8">
+          <div class="px-6 py-3 bg-white/20 backdrop-blur-sm rounded-lg text-white text-center">
+            <div class="text-sm opacity-80">EAU 2024</div>
+            <div class="font-bold">欧洲指南</div>
+          </div>
+          <div class="px-6 py-3 bg-white/20 backdrop-blur-sm rounded-lg text-white text-center">
+            <div class="text-sm opacity-80">AUA</div>
+            <div class="font-bold">美国指南</div>
+          </div>
+          <div class="px-6 py-3 bg-white/20 backdrop-blur-sm rounded-lg text-white text-center">
+            <div class="text-sm opacity-80">CUA</div>
+            <div class="font-bold">中国指南</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2024 EAU指南：代谢评估与复发预防 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-5">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="px-3 py-1 bg-blue-500 text-white text-sm rounded-full">EAU 2024</div>
+            <h2 class="text-3xl font-bold text-gray-800">代谢评估与复发预防指南更新</h2>
+          </div>
+          <p class="text-gray-500">欧洲泌尿外科学会2024年最新指南要点</p>
+        </div>
+        <div class="flex-1 grid grid-cols-2 gap-5">
+          <div class="space-y-4">
+            <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-5 text-white">
+              <h3 class="text-lg font-bold mb-3"><i class="fas fa-clipboard-check mr-2"></i>基本评估（所有患者）</h3>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check-circle mt-0.5"></i>
+                  <span>详细的医疗和营养史采集</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check-circle mt-0.5"></i>
+                  <span>结石成分分析（X射线衍射或红外光谱）</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check-circle mt-0.5"></i>
+                  <span>血液分析：肌酐、钙、尿酸、钠、钾</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check-circle mt-0.5"></i>
+                  <span>尿液分析：试纸检测+显微镜检查</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check-circle mt-0.5"></i>
+                  <span>影像学诊断：术前CT扫描明确解剖结构</span>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-white rounded-xl p-5 card-shadow border-l-4 border-orange-500">
+              <h3 class="text-lg font-bold text-gray-700 mb-3"><i class="fas fa-exclamation-circle text-orange-500 mr-2"></i>高风险患者标准</h3>
+              <div class="grid grid-cols-2 gap-2 text-sm">
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                  <span class="text-gray-600">复发性结石</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                  <span class="text-gray-600">多发性结石</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                  <span class="text-gray-600">双侧结石</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                  <span class="text-gray-600">胱氨酸结石</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                  <span class="text-gray-600">尿酸结石</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                  <span class="text-gray-600">鹿角形结石</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                  <span class="text-gray-600">儿童患者</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                  <span class="text-gray-600">肾功能不全</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl p-5 text-white">
+              <h3 class="text-lg font-bold mb-3"><i class="fas fa-microscope mr-2"></i>广泛代谢评估（高风险患者）</h3>
+              <div class="bg-white/20 rounded-lg p-3 mb-3">
+                <div class="text-sm font-bold mb-2">晨尿收集</div>
+                <div class="text-xs opacity-90">检测：尿量、pH值、钙、尿酸、枸橼酸、草酸、钠、钾、镁、肌酐</div>
+              </div>
+              <ul class="space-y-1 text-sm">
+                <li>• 计算结石过饱和度</li>
+                <li>• 评估代谢异常类型</li>
+                <li>• 指导个体化治疗方案</li>
+              </ul>
+            </div>
+            <div class="bg-white rounded-xl p-5 card-shadow">
+              <h3 class="text-lg font-bold text-gray-700 mb-3"><i class="fas fa-shield-alt text-green-500 mr-2"></i>预防措施推荐</h3>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-tint text-green-500 text-sm"></i>
+                  </div>
+                  <div>
+                    <div class="font-medium text-gray-700">液体摄入</div>
+                    <div class="text-sm text-gray-500">日尿量&gt;2.5L</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-utensils text-green-500 text-sm"></i>
+                  </div>
+                  <div>
+                    <div class="font-medium text-gray-700">饮食调整</div>
+                    <div class="text-sm text-gray-500">平衡饮食，限盐限蛋白</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-pills text-green-500 text-sm"></i>
+                  </div>
+                  <div>
+                    <div class="font-medium text-gray-700">药物治疗</div>
+                    <div class="text-sm text-gray-500">根据代谢异常类型选择</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-blue-50 rounded-xl p-4 border border-blue-100">
+              <div class="flex items-center gap-2 mb-2">
+                <i class="fas fa-lightbulb text-blue-500"></i>
+                <span class="font-bold text-gray-700">指南核心观点</span>
+              </div>
+              <p class="text-sm text-gray-600">"代谢评估对于减少复发和尿石症的长期并发症（如慢性肾衰竭和感染）至关重要"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUA与CUA指南对比 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-5">
+          <h2 class="text-3xl font-bold text-gray-800">AUA与CUA指南对比</h2>
+          <p class="text-gray-500 mt-1">美国与中国泌尿外科指南对代谢评估的推荐</p>
+        </div>
+        <div class="flex-1">
+          <div class="grid grid-cols-3 gap-4 mb-4">
+            <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-4 text-white text-center">
+              <div class="text-2xl font-bold mb-1">AUA</div>
+              <div class="text-sm opacity-90">美国泌尿外科学会</div>
+            </div>
+            <div class="bg-gradient-to-br from-red-500 to-red-600 rounded-xl p-4 text-white text-center">
+              <div class="text-2xl font-bold mb-1">CUA</div>
+              <div class="text-sm opacity-90">中国泌尿外科学会</div>
+            </div>
+            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-4 text-white text-center">
+              <div class="text-2xl font-bold mb-1">共同点</div>
+              <div class="text-sm opacity-90">指南共识</div>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="space-y-3">
+              <div class="bg-white rounded-xl p-4 card-shadow">
+                <h4 class="font-bold text-blue-600 mb-3"><i class="fas fa-clipboard-list mr-2"></i>评估推荐</h4>
+                <ul class="space-y-2 text-sm text-gray-600">
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-check text-blue-500 mt-1"></i>
+                    <span>所有患者需进一步代谢评估</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-check text-blue-500 mt-1"></i>
+                    <span>首选2次晨尿收集</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-check text-blue-500 mt-1"></i>
+                    <span>检测：钙、尿酸、枸橼酸、草酸、钠、钾、镁</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-check text-blue-500 mt-1"></i>
+                    <span>评估结石过饱和度</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="bg-white rounded-xl p-4 card-shadow">
+                <h4 class="font-bold text-blue-600 mb-3"><i class="fas fa-user-md mr-2"></i>高风险患者</h4>
+                <ul class="space-y-1 text-sm text-gray-600">
+                  <li>• 复发性结石患者</li>
+                  <li>• 多发/双侧结石</li>
+                  <li>• 特殊成分结石</li>
+                  <li>• 结石家族史</li>
+                  <li>• 慢性腹泻/吸收不良</li>
+                  <li>• 骨质疏松/病理性骨折</li>
+                </ul>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="bg-white rounded-xl p-4 card-shadow">
+                <h4 class="font-bold text-red-600 mb-3"><i class="fas fa-clipboard-list mr-2"></i>评估推荐</h4>
+                <ul class="space-y-2 text-sm text-gray-600">
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-check text-red-500 mt-1"></i>
+                    <span>复杂性肾结石患者做代谢评估</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-check text-red-500 mt-1"></i>
+                    <span>包括晨尿分析</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-check text-red-500 mt-1"></i>
+                    <span>遗传高风险人群基因检测</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-check text-red-500 mt-1"></i>
+                    <span>儿童、&lt;25岁成人建议基因检测</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="bg-white rounded-xl p-4 card-shadow">
+                <h4 class="font-bold text-red-600 mb-3"><i class="fas fa-dna mr-2"></i>分子诊断</h4>
+                <ul class="space-y-1 text-sm text-gray-600">
+                  <li>• 约30%儿童携带致病基因</li>
+                  <li>• 1-5%成人携带致病基因</li>
+                  <li>• 已知46个单基因变异</li>
+                  <li>• 23个相关基因证据支持</li>
+                </ul>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="bg-white rounded-xl p-4 card-shadow">
+                <h4 class="font-bold text-green-600 mb-3"><i class="fas fa-handshake mr-2"></i>指南共识</h4>
+                <ul class="space-y-2 text-sm text-gray-600">
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-star text-green-500 mt-1"></i>
+                    <span>任何首次结石患者均应进行结石成分分析</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-star text-green-500 mt-1"></i>
+                    <span>应进行尿液成石因子分析</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-star text-green-500 mt-1"></i>
+                    <span>代谢评估可明确95%结石病因</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-star text-green-500 mt-1"></i>
+                    <span>个体化防治可使复发率降至10-15%</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="bg-green-50 rounded-xl p-4 border border-green-100">
+                <h4 class="font-bold text-green-700 mb-2"><i class="fas fa-chart-line mr-2"></i>临床意义</h4>
+                <p class="text-sm text-gray-600">通过代谢评估技术进行病因诊断，针对病因进行个体化防治，是降低结石复发率的关键策略</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 指南核心要点总结 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-4">
+          <h2 class="text-3xl font-bold text-gray-800">指南核心要点总结</h2>
+          <p class="text-gray-500 mt-1">三大指南共同推荐的结石病防治策略</p>
+        </div>
+        <div class="flex-1 grid grid-cols-2 gap-4">
+          <div class="space-y-3">
+            <div class="bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl p-4 text-white">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                  <i class="fas fa-vial text-xl"></i>
+                </div>
+                <div>
+                  <div class="text-base font-bold">结石成分分析</div>
+                  <div class="text-xs opacity-80">所有首次结石患者的必做检查</div>
+                </div>
+              </div>
+              <ul class="space-y-1 text-sm">
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-angle-right mt-1 text-xs"></i>
+                  <span>采用X射线衍射或红外光谱法</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-angle-right mt-1 text-xs"></i>
+                  <span>明确结石类型指导治疗方案</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-angle-right mt-1 text-xs"></i>
+                  <span>复发时需重复分析（成分可能改变）</span>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl p-4 text-white">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                  <i class="fas fa-flask text-xl"></i>
+                </div>
+                <div>
+                  <div class="text-base font-bold">尿液成石因子分析</div>
+                  <div class="text-xs opacity-80">代谢评估的核心内容</div>
+                </div>
+              </div>
+              <ul class="space-y-1 text-sm">
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-angle-right mt-1 text-xs"></i>
+                  <span>晨尿检测是金标准</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-angle-right mt-1 text-xs"></i>
+                  <span>检测钙、草酸、尿酸、枸橼酸、镁等</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-angle-right mt-1 text-xs"></i>
+                  <span>建议连续收集2次提高准确性</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="space-y-3">
+            <div class="bg-white rounded-xl p-4 card-shadow">
+              <h3 class="text-base font-bold text-gray-700 mb-3"><i class="fas fa-bullseye text-orange-500 mr-2"></i>个体化防治目标</h3>
+              <div class="grid grid-cols-2 gap-2">
+                <div class="text-center p-3 bg-orange-50 rounded-lg">
+                  <div class="text-2xl font-bold text-orange-500 mb-1">50-90%</div>
+                  <div class="text-xs text-gray-600">自然复发率</div>
+                </div>
+                <div class="text-center p-3 bg-green-50 rounded-lg">
+                  <div class="text-2xl font-bold text-green-500 mb-1">10-15%</div>
+                  <div class="text-xs text-gray-600">干预后复发率</div>
+                </div>
+              </div>
+              <div class="mt-3 p-2 bg-gray-50 rounded-lg">
+                <div class="text-xs text-gray-600 text-center">
+                  <i class="fas fa-arrow-down text-green-500 mr-1"></i>
+                  通过代谢评估和个体化防治，复发率可降低
+                  <span class="text-lg font-bold text-green-600 mx-1">60-80%</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-4 card-shadow">
+              <h3 class="text-base font-bold text-gray-700 mb-3"><i class="fas fa-tasks text-purple-500 mr-2"></i>代谢评估流程</h3>
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 rounded-full bg-purple-500 text-white flex items-center justify-center text-xs font-bold">1</div>
+                  <div class="flex-1 p-2 bg-purple-50 rounded-lg">
+                    <div class="font-medium text-gray-700 text-sm">基础评估</div>
+                    <div class="text-xs text-gray-500">病史+血液检查+尿液分析</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 rounded-full bg-purple-500 text-white flex items-center justify-center text-xs font-bold">2</div>
+                  <div class="flex-1 p-2 bg-purple-50 rounded-lg">
+                    <div class="font-medium text-gray-700 text-sm">结石分析</div>
+                    <div class="text-xs text-gray-500">明确结石成分类型</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 rounded-full bg-purple-500 text-white flex items-center justify-center text-xs font-bold">3</div>
+                  <div class="flex-1 p-2 bg-purple-50 rounded-lg">
+                    <div class="font-medium text-gray-700 text-sm">晨尿分析</div>
+                    <div class="text-xs text-gray-500">识别代谢异常</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 rounded-full bg-purple-500 text-white flex items-center justify-center text-xs font-bold">4</div>
+                  <div class="flex-1 p-2 bg-purple-50 rounded-lg">
+                    <div class="font-medium text-gray-700 text-sm">个体化防治</div>
+                    <div class="text-xs text-gray-500">针对性治疗方案</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3 bg-gradient-to-r from-sky-500 to-blue-600 rounded-xl p-3 text-white text-center">
+          <i class="fas fa-quote-left mr-2"></i>
+          任何首次结石的患者均应进行结石成分分析、尿液成石因子分析
+          <i class="fas fa-quote-right ml-2"></i>
+        </div>
+      </div>
+    </div>
+<!-- 章节页：常规检测与项目检测对比 -->
+    <div class="ppt-slide !bg-gradient-to-br !from-teal-900 !via-teal-800 !to-cyan-900" type="chapter">
+      <div class="chapter-number">03</div>
+      <div class="h-full flex flex-col justify-center relative z-10">
+        <div class="mb-4">
+          <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">
+            CHAPTER 03
+          </span>
+        </div>
+        <h2 class="text-5xl font-bold text-white mb-4">常规检测与项目检测对比</h2>
+        <p class="text-2xl text-teal-100">尿液结石风险因子评估 vs 常规尿液生化检测</p>
+        <div class="mt-12 flex gap-8">
+          <div class="text-center">
+            <div class="text-5xl font-bold text-white mb-2">常规检测</div>
+            <div class="text-teal-200">瞬时状态</div>
+          </div>
+          <div class="text-4xl text-white/50">→</div>
+          <div class="text-center">
+            <div class="text-5xl font-bold text-white mb-2">晨尿</div>
+            <div class="text-teal-200">全天代谢</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 常规尿液检测的局限性 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-5">
+          <h2 class="text-3xl font-bold text-gray-800">常规尿液检测的局限性</h2>
+          <p class="text-gray-500 mt-1">为什么常规尿常规无法满足结石风险评估需求</p>
+        </div>
+        <div class="flex-1 grid grid-cols-2 gap-5">
+          <div class="space-y-4">
+            <div class="bg-white rounded-xl p-5 card-shadow border-l-4 border-red-500">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+                  <i class="fas fa-clock text-red-500"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-700">只能反映瞬时状态</h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-3">常规尿常规是单次随机尿液检测，受饮水量、运动、饮食等因素影响大，无法反映全天代谢状态。</p>
+              <div class="bg-red-50 rounded-lg p-3 text-sm text-gray-600">
+                <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>
+                可能导致假阳性/假阴性结果
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 card-shadow border-l-4 border-orange-500">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
+                  <i class="fas fa-ruler text-orange-500"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-700">无法定量分析</h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-3">常规检测只能定性或半定量（如"+"符号），无法精确测定成石因子的具体排泄量。</p>
+              <div class="bg-orange-50 rounded-lg p-3 text-sm text-gray-600">
+                <i class="fas fa-info-circle text-orange-500 mr-2"></i>
+                无法计算结石过饱和度
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 card-shadow border-l-4 border-yellow-500">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center">
+                  <i class="fas fa-list-ul text-yellow-500"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-700">检测项目有限</h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-3">常规尿常规主要检测pH值、比重、蛋白、糖、红细胞、白细胞等，缺少钙、草酸、枸橼酸等成石因子检测。</p>
+              <div class="bg-yellow-50 rounded-lg p-3 text-sm text-gray-600">
+                <i class="fas fa-minus-circle text-yellow-500 mr-2"></i>
+                无法全面评估结石风险
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-gradient-to-br from-gray-500 to-gray-600 rounded-xl p-5 text-white">
+              <h3 class="text-lg font-bold mb-4"><i class="fas fa-not-equal mr-2"></i>常规检测 vs 结石风险评估需求</h3>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between p-3 bg-white/20 rounded-lg">
+                  <span>反映代谢状态</span>
+                  <span class="text-red-300"><i class="fas fa-times"></i> 不足</span>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-white/20 rounded-lg">
+                  <span>定量成石因子</span>
+                  <span class="text-red-300"><i class="fas fa-times"></i> 不能</span>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-white/20 rounded-lg">
+                  <span>评估复发风险</span>
+                  <span class="text-red-300"><i class="fas fa-times"></i> 不能</span>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-white/20 rounded-lg">
+                  <span>指导个体化治疗</span>
+                  <span class="text-red-300"><i class="fas fa-times"></i> 不足</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+              <h3 class="text-lg font-bold text-blue-700 mb-3"><i class="fas fa-lightbulb mr-2"></i>临床启示</h3>
+              <p class="text-gray-600 text-sm mb-3">常规尿常规适用于泌尿系统感染、肾炎等疾病的初步筛查，但对于结石病因诊断和复发风险评估存在明显不足。</p>
+              <div class="bg-white rounded-lg p-3">
+                <div class="text-sm text-gray-700 font-medium mb-2">结石患者需要：</div>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>✓ 晨尿成石因子定量分析</li>
+                  <li>✓ 结石成分分析</li>
+                  <li>✓ 代谢异常类型识别</li>
+                  <li>✓ 个体化防治方案</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 晨尿风险因子评估的优势 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-5">
+          <h2 class="text-3xl font-bold text-gray-800">晨尿风险因子评估的优势</h2>
+          <p class="text-gray-500 mt-1">代谢评估金标准的临床价值</p>
+        </div>
+        <div class="flex-1 grid grid-cols-3 gap-4">
+          <div class="space-y-4">
+            <div class="bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl p-5 text-white h-full">
+              <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center mb-4">
+                <i class="fas fa-calendar-day text-3xl"></i>
+              </div>
+              <h3 class="text-lg font-bold mb-3">反映全天代谢状态</h3>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check mt-1"></i>
+                  <span>一次晨尿收集</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check mt-1"></i>
+                  <span>排除瞬时波动影响</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check mt-1"></i>
+                  <span>真实反映代谢水平</span>
+                </li>
+              </ul>
+              <div class="mt-4 p-3 bg-white/20 rounded-lg text-sm">
+                <i class="fas fa-star mr-2"></i>
+                代谢评估的金标准方法
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl p-5 text-white h-full">
+              <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center mb-4">
+                <i class="fas fa-vial text-3xl"></i>
+              </div>
+              <h3 class="text-lg font-bold mb-3">定量检测成石因子</h3>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check mt-1"></i>
+                  <span>钙、草酸、尿酸精确测定</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check mt-1"></i>
+                  <span>枸橼酸、镁等抑制因子</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check mt-1"></i>
+                  <span>计算结石过饱和度</span>
+                </li>
+              </ul>
+              <div class="mt-4 p-3 bg-white/20 rounded-lg text-sm">
+                <i class="fas fa-calculator mr-2"></i>
+                9大关键指标全面评估
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-5 text-white h-full">
+              <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center mb-4">
+                <i class="fas fa-user-md text-3xl"></i>
+              </div>
+              <h3 class="text-lg font-bold mb-3">指导个体化治疗</h3>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check mt-1"></i>
+                  <span>识别代谢异常类型</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check mt-1"></i>
+                  <span>精准风险分层</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check mt-1"></i>
+                  <span>制定针对性防治方案</span>
+                </li>
+              </ul>
+              <div class="mt-4 p-3 bg-white/20 rounded-lg text-sm">
+                <i class="fas fa-chart-line mr-2"></i>
+                复发率降低60-80%
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 grid grid-cols-2 gap-4">
+          <div class="bg-white rounded-xl p-4 card-shadow">
+            <h4 class="font-bold text-gray-700 mb-3"><i class="fas fa-flask text-sky-500 mr-2"></i>检测指标与临床意义</h4>
+            <div class="grid grid-cols-3 gap-2 text-sm">
+              <div class="p-2 bg-sky-50 rounded-lg text-center">
+                <div class="font-medium text-sky-700">钙离子</div>
+                <div class="text-gray-500 text-xs">高钙尿症</div>
+              </div>
+              <div class="p-2 bg-sky-50 rounded-lg text-center">
+                <div class="font-medium text-sky-700">草酸根</div>
+                <div class="text-gray-500 text-xs">高草酸尿症</div>
+              </div>
+              <div class="p-2 bg-sky-50 rounded-lg text-center">
+                <div class="font-medium text-sky-700">尿酸</div>
+                <div class="text-gray-500 text-xs">高尿酸尿症</div>
+              </div>
+              <div class="p-2 bg-green-50 rounded-lg text-center">
+                <div class="font-medium text-green-700">枸橼酸</div>
+                <div class="text-gray-500 text-xs">低枸橼酸尿症</div>
+              </div>
+              <div class="p-2 bg-green-50 rounded-lg text-center">
+                <div class="font-medium text-green-700">镁离子</div>
+                <div class="text-gray-500 text-xs">低镁尿症</div>
+              </div>
+              <div class="p-2 bg-purple-50 rounded-lg text-center">
+                <div class="font-medium text-purple-700">胱氨酸</div>
+                <div class="text-gray-500 text-xs">胱氨酸尿症</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-4 card-shadow">
+            <h4 class="font-bold text-gray-700 mb-3"><i class="fas fa-chart-bar text-green-500 mr-2"></i>循证医学证据</h4>
+            <div class="space-y-2 text-sm text-gray-600">
+              <div class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-green-500 mt-0.5"></i>
+                <span>6217人前瞻性队列研究：除pH外，所有尿液成分与结石形成显著相关</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-green-500 mt-0.5"></i>
+                <span>代谢评估可明确95%结石病因</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <i class="fas fa-check-circle text-green-500 mt-0.5"></i>
+                <span>个体化防治使复发率从50-90%降至10-15%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 检测技术与设备对比 - 第一部分 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-4">
+          <h2 class="text-3xl font-bold text-gray-800">检测技术与设备对比（一）</h2>
+          <p class="text-gray-500 mt-1">尿常规 vs 尿液结石风险因子评估</p>
+        </div>
+        <div class="flex-1 flex flex-col">
+          <div class="bg-white rounded-xl overflow-hidden card-shadow flex-1">
+            <table class="w-full h-full">
+              <thead>
+                <tr class="bg-gradient-to-r from-sky-500 to-blue-600 text-white">
+                  <th class="py-4 px-5 text-left font-bold text-base">对比维度</th>
+                  <th class="py-4 px-5 text-left font-bold text-base">尿常规</th>
+                  <th class="py-4 px-5 text-left font-bold bg-blue-700 text-base">尿液结石风险因子评估</th>
+                </tr>
+              </thead>
+              <tbody class="text-base">
+                <tr class="border-b border-gray-100">
+                  <td class="py-5 px-5 font-medium text-gray-700">检测技术</td>
+                  <td class="py-5 px-5 text-gray-600">试纸法、干化学法</td>
+                  <td class="py-5 px-5 bg-blue-50 text-gray-700 font-medium">EQUIL离子检测+质谱+生化</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-5 px-5 font-medium text-gray-700">检测指标</td>
+                  <td class="py-5 px-5 text-gray-600">pH、比重、蛋白、糖、红细胞、白细胞</td>
+                  <td class="py-5 px-5 bg-blue-50 text-gray-700 font-medium">钙、草酸、尿酸、枸橼酸、镁、胱氨酸等9大指标</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-5 px-5 font-medium text-gray-700">定量能力</td>
+                  <td class="py-5 px-5 text-gray-600">定性/半定量（+/-）</td>
+                  <td class="py-5 px-5 bg-blue-50 text-gray-700 font-medium">精确定量（mmol/L）</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-5 px-5 font-medium text-gray-700">代谢评估</td>
+                  <td class="py-5 px-5 text-gray-600">无法评估</td>
+                  <td class="py-5 px-5 bg-blue-50 text-gray-700 font-medium">全面代谢评估，计算结石过饱和度</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-5 px-5 font-medium text-gray-700">复发风险评估</td>
+                  <td class="py-5 px-5 text-gray-600">无法评估</td>
+                  <td class="py-5 px-5 bg-blue-50 text-gray-700 font-medium">精准评估复发风险</td>
+                </tr>
+                <tr>
+                  <td class="py-5 px-5 font-medium text-gray-700">临床应用</td>
+                  <td class="py-5 px-5 text-gray-600">感染、肾炎等初步筛查</td>
+                  <td class="py-5 px-5 bg-blue-50 text-gray-700 font-medium">结石病因诊断、复发预防、个体化治疗</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 检测技术与设备对比 - 第二部分 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-4">
+          <h2 class="text-3xl font-bold text-gray-800">检测技术与设备对比（二）</h2>
+          <p class="text-gray-500 mt-1">汉库医学 vs 常规机构检测</p>
+        </div>
+        <div class="flex-1 flex flex-col">
+          <div class="bg-white rounded-xl overflow-hidden card-shadow flex-1">
+            <table class="w-full h-full">
+              <thead>
+                <tr class="bg-gradient-to-r from-sky-500 to-blue-600 text-white">
+                  <th class="py-4 px-5 text-left font-bold text-base">对比维度</th>
+                  <th class="py-4 px-5 text-left font-bold text-base">常规机构结石检测</th>
+                  <th class="py-4 px-5 text-left font-bold bg-blue-700 text-base">汉库医学检测分析</th>
+                </tr>
+              </thead>
+              <tbody class="text-base">
+                <tr class="border-b border-gray-100">
+                  <td class="py-4 px-5 font-medium text-gray-700">检测技术</td>
+                  <td class="py-4 px-5 text-gray-600">
+                    <span class="text-red-500"><i class="fas fa-times-circle mr-2"></i></span>
+                    需添加化学溴化钾，多次检测结果差异性较大
+                  </td>
+                  <td class="py-4 px-5 bg-blue-50">
+                    <span class="text-green-500"><i class="fas fa-check-circle mr-2"></i></span>
+                    无需添加化学成分，检测结果稳定可靠
+                  </td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-4 px-5 font-medium text-gray-700">检测范围</td>
+                  <td class="py-4 px-5 text-gray-600">
+                    <span class="text-red-500"><i class="fas fa-times-circle mr-2"></i></span>
+                    只能分析3-4种结石成分
+                  </td>
+                  <td class="py-4 px-5 bg-blue-50">
+                    <span class="text-green-500"><i class="fas fa-check-circle mr-2"></i></span>
+                    精确检出30余种结石成分
+                  </td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-4 px-5 font-medium text-gray-700">标本大小</td>
+                  <td class="py-4 px-5 text-gray-600">
+                    <span class="text-red-500"><i class="fas fa-times-circle mr-2"></i></span>
+                    需&gt;1g标本，低于此量几乎检测不出
+                  </td>
+                  <td class="py-4 px-5 bg-blue-50">
+                    <span class="text-green-500"><i class="fas fa-check-circle mr-2"></i></span>
+                    微量分析，只需0.01g即可分析
+                  </td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-4 px-5 font-medium text-gray-700">精准程度</td>
+                  <td class="py-4 px-5 text-gray-600">
+                    <span class="text-red-500"><i class="fas fa-times-circle mr-2"></i></span>
+                    非专业人员检测，无室间质控
+                  </td>
+                  <td class="py-4 px-5 bg-blue-50">
+                    <span class="text-green-500"><i class="fas fa-check-circle mr-2"></i></span>
+                    专业人员图谱分析，定期室间质控
+                  </td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-4 px-5 font-medium text-gray-700">检测报告</td>
+                  <td class="py-4 px-5 text-gray-600">
+                    <span class="text-red-500"><i class="fas fa-times-circle mr-2"></i></span>
+                    内容简单，患者难以理解
+                  </td>
+                  <td class="py-4 px-5 bg-blue-50">
+                    <span class="text-green-500"><i class="fas fa-check-circle mr-2"></i></span>
+                    提供成分报告+预防报告+靶向防治报告
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 px-5 font-medium text-gray-700">售后服务</td>
+                  <td class="py-4 px-5 text-gray-600">
+                    <span class="text-red-500"><i class="fas fa-times-circle mr-2"></i></span>
+                    无售后服务
+                  </td>
+                  <td class="py-4 px-5 bg-blue-50">
+                    <span class="text-green-500"><i class="fas fa-check-circle mr-2"></i></span>
+                    专业营养师+24小时400电话咨询服务
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grid grid-cols-2 gap-4 mt-4">
+            <div class="bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl p-4 text-white">
+              <h4 class="font-bold mb-2"><i class="fas fa-microscope mr-2"></i>核心技术</h4>
+              <div class="space-y-1 text-sm">
+                <div class="flex items-center gap-2">
+                  <i class="fas fa-atom"></i>
+                  <span>EQUIL离子检测技术</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fas fa-wave-square"></i>
+                  <span>傅立叶变换红外光谱（FTIR）</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fas fa-award"></i>
+                  <span>美国梅奥实验室指定设备</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl p-4 text-white">
+              <h4 class="font-bold mb-2"><i class="fas fa-certificate mr-2"></i>质量保证</h4>
+              <div class="space-y-1 text-sm">
+                <div class="flex items-center gap-2">
+                  <i class="fas fa-check"></i>
+                  <span>ISO15189医学实验室认证</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fas fa-check"></i>
+                  <span>定期室间质控及对比</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fas fa-check"></i>
+                  <span>专业人员图谱分析</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 创新技术：晨尿样本检测 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-5">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm rounded-full font-bold">
+              <i class="fas fa-star mr-1"></i>创新技术
+            </div>
+            <h2 class="text-3xl font-bold text-gray-800">晨尿样本检测技术突破</h2>
+          </div>
+          <p class="text-gray-500 mt-1">汉库医学自主研发的创新检测方法，以晨尿样本替代传统24小时尿液收集</p>
+        </div>
+        <div class="flex-1 grid grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-5 text-white">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
+                  <i class="fas fa-flask text-3xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold">技术创新</h3>
+                  <p class="text-green-100 text-sm">晨尿样本代替24小时尿液</p>
+                </div>
+              </div>
+              <div class="bg-white/20 rounded-lg p-4">
+                <p class="text-sm leading-relaxed">
+                  汉库医学自主研发创新检测技术，成功实现以<span class="font-bold text-yellow-200">晨尿样本</span>代替传统<span class="font-bold text-yellow-200">24小时尿液收集</span>进行结石风险因子检测。
+                </p>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 card-shadow border-l-4 border-green-500">
+              <h4 class="font-bold text-gray-700 mb-3"><i class="fas fa-check-double text-green-500 mr-2"></i>方法学验证结果</h4>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
+                  <div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-lg">✓</div>
+                  <div>
+                    <div class="font-medium text-gray-700">准确率验证</div>
+                    <div class="text-sm text-gray-500">与24小时尿液结果误差在<span class="text-green-600 font-bold">10%以内</span></div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
+                  <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-lg">✓</div>
+                  <div>
+                    <div class="font-medium text-gray-700">临床适用性</div>
+                    <div class="text-sm text-gray-500">经过大规模临床样本验证，结果可靠</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-purple-50 rounded-lg">
+                  <div class="w-10 h-10 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-lg">✓</div>
+                  <div>
+                    <div class="font-medium text-gray-700">技术稳定性</div>
+                    <div class="text-sm text-gray-500">重复性好，批间变异系数符合标准要求</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-white rounded-xl p-5 card-shadow">
+              <h4 class="font-bold text-gray-700 mb-4"><i class="fas fa-balance-scale text-sky-500 mr-2"></i>晨尿检测 vs 24小时尿液对比</h4>
+              <div class="space-y-3">
+                <div class="grid grid-cols-3 gap-2 text-center text-sm">
+                  <div class="p-2 bg-gray-100 rounded-lg font-medium text-gray-600">对比维度</div>
+                  <div class="p-2 bg-orange-100 rounded-lg font-medium text-orange-600">24小时尿液</div>
+                  <div class="p-2 bg-green-100 rounded-lg font-medium text-green-600">晨尿检测</div>
+                </div>
+                <div class="grid grid-cols-3 gap-2 text-center text-sm">
+                  <div class="p-2 bg-gray-50 rounded text-gray-600">样本收集</div>
+                  <div class="p-2 rounded text-gray-500">需全天收集，繁琐</div>
+                  <div class="p-2 bg-green-50 rounded text-green-700 font-medium">单次采集，便捷</div>
+                </div>
+                <div class="grid grid-cols-3 gap-2 text-center text-sm">
+                  <div class="p-2 bg-gray-50 rounded text-gray-600">患者依从性</div>
+                  <div class="p-2 rounded text-gray-500">依从性差，易漏收</div>
+                  <div class="p-2 bg-green-50 rounded text-green-700 font-medium">依从性高，易操作</div>
+                </div>
+                <div class="grid grid-cols-3 gap-2 text-center text-sm">
+                  <div class="p-2 bg-gray-50 rounded text-gray-600">检测周期</div>
+                  <div class="p-2 rounded text-gray-500">需24小时以上</div>
+                  <div class="p-2 bg-green-50 rounded text-green-700 font-medium">即时采集即时送检</div>
+                </div>
+                <div class="grid grid-cols-3 gap-2 text-center text-sm">
+                  <div class="p-2 bg-gray-50 rounded text-gray-600">结果准确性</div>
+                  <div class="p-2 rounded text-orange-600">金标准</div>
+                  <div class="p-2 bg-green-50 rounded text-green-700 font-medium">误差<10%，临床等效</div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl p-5 text-white">
+              <div class="flex items-center gap-3 mb-3">
+                <i class="fas fa-lightbulb text-2xl"></i>
+                <h4 class="text-lg font-bold">临床价值</h4>
+              </div>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check-circle mt-1"></i>
+                  <span>大幅提高患者检测依从性</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check-circle mt-1"></i>
+                  <span>简化样本采集流程，降低操作难度</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check-circle mt-1"></i>
+                  <span>缩短检测周期，加快诊疗决策</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check-circle mt-1"></i>
+                  <span>保持与24小时尿液相当的检测准确性</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- 章节页：项目核心优势与临床价值 -->
+    <div class="ppt-slide !bg-gradient-to-br !from-indigo-900 !via-indigo-800 !to-purple-900" type="chapter">
+      <div class="chapter-number">04</div>
+      <div class="h-full flex flex-col justify-center relative z-10">
+        <div class="mb-4">
+          <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">
+            CHAPTER 04
+          </span>
+        </div>
+        <h2 class="text-5xl font-bold text-white mb-4">项目核心优势与临床价值</h2>
+        <p class="text-2xl text-indigo-100">尿液结石风险因子评估的临床应用价值</p>
+        <div class="mt-12 grid grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-3">
+              <i class="fas fa-vials text-4xl text-white"></i>
+            </div>
+            <div class="text-white font-bold">9大指标</div>
+            <div class="text-indigo-200 text-sm">全面检测</div>
+          </div>
+          <div class="text-center">
+            <div class="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-3">
+              <i class="fas fa-crosshairs text-4xl text-white"></i>
+            </div>
+            <div class="text-white font-bold">精准评估</div>
+            <div class="text-indigo-200 text-sm">国际标准</div>
+          </div>
+          <div class="text-center">
+            <div class="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-3">
+              <i class="fas fa-user-md text-4xl text-white"></i>
+            </div>
+            <div class="text-white font-bold">个体化防治</div>
+            <div class="text-indigo-200 text-sm">降低复发</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 项目检测内容与技术优势 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-5">
+          <h2 class="text-3xl font-bold text-gray-800">项目检测内容与技术优势</h2>
+          <p class="text-gray-500 mt-1">采用国际领先的EQUIL离子检测技术</p>
+        </div>
+        <div class="flex-1 grid grid-cols-2 gap-5">
+          <div class="space-y-4">
+            <div class="bg-white rounded-xl p-5 card-shadow">
+              <h3 class="text-lg font-bold text-gray-700 mb-4"><i class="fas fa-vial text-sky-500 mr-2"></i>9大检测指标</h3>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="p-3 bg-gradient-to-br from-sky-50 to-sky-100 rounded-lg text-center">
+                  <div class="text-sky-600 font-bold">钙离子</div>
+                  <div class="text-xs text-gray-500">Ca²⁺</div>
+                </div>
+                <div class="p-3 bg-gradient-to-br from-sky-50 to-sky-100 rounded-lg text-center">
+                  <div class="text-sky-600 font-bold">草酸根</div>
+                  <div class="text-xs text-gray-500">C₂O₄²⁻</div>
+                </div>
+                <div class="p-3 bg-gradient-to-br from-sky-50 to-sky-100 rounded-lg text-center">
+                  <div class="text-sky-600 font-bold">磷酸根</div>
+                  <div class="text-xs text-gray-500">PO₄³⁻</div>
+                </div>
+                <div class="p-3 bg-gradient-to-br from-green-50 to-green-100 rounded-lg text-center">
+                  <div class="text-green-600 font-bold">枸橼酸</div>
+                  <div class="text-xs text-gray-500">Citrate</div>
+                </div>
+                <div class="p-3 bg-gradient-to-br from-green-50 to-green-100 rounded-lg text-center">
+                  <div class="text-green-600 font-bold">镁离子</div>
+                  <div class="text-xs text-gray-500">Mg²⁺</div>
+                </div>
+                <div class="p-3 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg text-center">
+                  <div class="text-purple-600 font-bold">尿酸</div>
+                  <div class="text-xs text-gray-500">UA</div>
+                </div>
+                <div class="p-3 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg text-center">
+                  <div class="text-purple-600 font-bold">胱氨酸</div>
+                  <div class="text-xs text-gray-500">Cystine</div>
+                </div>
+                <div class="p-3 bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg text-center">
+                  <div class="text-orange-600 font-bold">肌酐</div>
+                  <div class="text-xs text-gray-500">Cr</div>
+                </div>
+                <div class="p-3 bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg text-center">
+                  <div class="text-orange-600 font-bold">pH值</div>
+                  <div class="text-xs text-gray-500">酸碱度</div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl p-5 text-white">
+              <h3 class="text-lg font-bold mb-3"><i class="fas fa-cogs mr-2"></i>检测技术特点</h3>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="p-3 bg-white/20 rounded-lg text-center">
+                  <i class="fas fa-bullseye text-2xl mb-2"></i>
+                  <div class="text-sm font-medium">灵敏度高</div>
+                </div>
+                <div class="p-3 bg-white/20 rounded-lg text-center">
+                  <i class="fas fa-ruler text-2xl mb-2"></i>
+                  <div class="text-sm font-medium">精度高</div>
+                </div>
+                <div class="p-3 bg-white/20 rounded-lg text-center">
+                  <i class="fas fa-redo text-2xl mb-2"></i>
+                  <div class="text-sm font-medium">重复性好</div>
+                </div>
+                <div class="p-3 bg-white/20 rounded-lg text-center">
+                  <i class="fas fa-layer-group text-2xl mb-2"></i>
+                  <div class="text-sm font-medium">多指标同步</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-white rounded-xl p-5 card-shadow">
+              <h3 class="text-lg font-bold text-gray-700 mb-4"><i class="fas fa-flask text-teal-500 mr-2"></i>检测方法</h3>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                  <div class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-atom text-teal-600"></i>
+                  </div>
+                  <div>
+                    <div class="font-medium text-gray-700">离子交换色谱</div>
+                    <div class="text-sm text-gray-500">精确测定离子浓度</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                  <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-dna text-blue-600"></i>
+                  </div>
+                  <div>
+                    <div class="font-medium text-gray-700">生物化学法</div>
+                    <div class="text-sm text-gray-500">酶法测定代谢产物</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                  <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-microscope text-purple-600"></i>
+                  </div>
+                  <div>
+                    <div class="font-medium text-gray-700">液相色谱-质谱</div>
+                    <div class="text-sm text-gray-500">高灵敏度检测</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-5 text-white">
+              <h3 class="text-lg font-bold mb-3"><i class="fas fa-chart-line mr-2"></i>临床应用价值</h3>
+              <ul class="space-y-2 text-sm">
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check mt-1"></i>
+                  <span>真实反映患者代谢状况水平</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check mt-1"></i>
+                  <span>为结石治疗和预防复发提供线索</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check mt-1"></i>
+                  <span>对潜在高发人群提前筛查和预警</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i class="fas fa-check mt-1"></i>
+                  <span>指导个体化精准防治方案</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 临床评估标准与风险分级 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-5">
+          <h2 class="text-3xl font-bold text-gray-800">临床评估标准与风险分级</h2>
+          <p class="text-gray-500 mt-1">中国泌尿外科指南与欧盟标准相结合的综合评估体系</p>
+        </div>
+        <div class="flex-1">
+          <div class="bg-white rounded-xl overflow-hidden card-shadow mb-4">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="bg-gradient-to-r from-sky-500 to-blue-600 text-white">
+                  <th class="py-2 px-3 text-left">病症名称</th>
+                  <th class="py-2 px-3 text-left">检测物质</th>
+                  <th class="py-2 px-3 text-left">中国指南标准</th>
+                  <th class="py-2 px-3 text-left">欧盟标准</th>
+                  <th class="py-2 px-3 text-left bg-blue-700">综合临床标准</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2 px-3 font-medium text-red-600">高钙尿症</td>
+                  <td class="py-2 px-3">钙离子</td>
+                  <td class="py-2 px-3">&gt;5 mmol/d</td>
+                  <td class="py-2 px-3">&gt;5 mmol/d</td>
+                  <td class="py-2 px-3 bg-blue-50 font-medium">&gt;5 mmol/d</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2 px-3 font-medium text-red-600">高草酸尿症</td>
+                  <td class="py-2 px-3">草酸根离子</td>
+                  <td class="py-2 px-3">&gt;0.5 mmol/d</td>
+                  <td class="py-2 px-3">&gt;0.47 mmol/d</td>
+                  <td class="py-2 px-3 bg-blue-50 font-medium">&gt;0.5 mmol/d</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2 px-3 font-medium text-red-600">高尿酸尿症</td>
+                  <td class="py-2 px-3">尿尿酸</td>
+                  <td class="py-2 px-3">&gt;4 mmol/d</td>
+                  <td class="py-2 px-3">&gt;3.8 mmol/d</td>
+                  <td class="py-2 px-3 bg-blue-50 font-medium">&gt;3.8 mmol/d</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2 px-3 font-medium text-red-600">高胱氨酸尿</td>
+                  <td class="py-2 px-3">胱氨酸</td>
+                  <td class="py-2 px-3">&gt;0.8 mmol/d</td>
+                  <td class="py-2 px-3">&gt;0.8 mmol/d</td>
+                  <td class="py-2 px-3 bg-blue-50 font-medium">&gt;0.8 mmol/d</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="py-2 px-3 font-medium text-orange-600">低枸橼酸尿症</td>
+                  <td class="py-2 px-3">枸橼酸离子</td>
+                  <td class="py-2 px-3">男&lt;1.7 女&lt;1.9</td>
+                  <td class="py-2 px-3">&lt;1.9/1.7</td>
+                  <td class="py-2 px-3 bg-blue-50 font-medium">&lt;1.8 mmol/d</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-3 font-medium text-orange-600">低镁尿症</td>
+                  <td class="py-2 px-3">镁离子</td>
+                  <td class="py-2 px-3">&lt;3.0 mmol/d</td>
+                  <td class="py-2 px-3">&lt;3.0 mmol/d</td>
+                  <td class="py-2 px-3 bg-blue-50 font-medium">&lt;3.0 mmol/d</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-4 text-white">
+              <h4 class="font-bold mb-3"><i class="fas fa-shield-alt mr-2"></i>普通预防</h4>
+              <ul class="space-y-1 text-sm">
+                <li>• 每天饮水2L以上</li>
+                <li>• 避免食物过咸</li>
+                <li>• 限制草酸摄入</li>
+                <li>• 限制肉类摄入</li>
+                <li>• 增加枸橼酸钾</li>
+              </ul>
+            </div>
+            <div class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl p-4 text-white">
+              <h4 class="font-bold mb-3"><i class="fas fa-pills mr-2"></i>针对性预防</h4>
+              <ul class="space-y-1 text-sm">
+                <li>• 补充钙+镁</li>
+                <li>• 维生素B6降草酸</li>
+                <li>• 碱性枸橼酸盐</li>
+                <li>• 噻嗪类利尿剂</li>
+                <li>• 别嘌醇降尿酸</li>
+              </ul>
+            </div>
+            <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-4 text-white">
+              <h4 class="font-bold mb-3"><i class="fas fa-user-shield mr-2"></i>风险分层</h4>
+              <ul class="space-y-1 text-sm">
+                <li>• 低危：单发结石</li>
+                <li>• 中危：复发结石</li>
+                <li>• 高危：多发/双侧</li>
+                <li>• 极高危：特殊成分</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 精准防治方案与临床意义 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-5">
+          <h2 class="text-3xl font-bold text-gray-800">精准防治方案与临床意义</h2>
+          <p class="text-gray-500 mt-1">基于代谢评估结果的个体化防治策略</p>
+        </div>
+        <div class="flex-1 grid grid-cols-2 gap-5">
+          <div class="space-y-4">
+            <div class="bg-white rounded-xl p-5 card-shadow">
+              <h3 class="text-lg font-bold text-gray-700 mb-4"><i class="fas fa-cubes text-sky-500 mr-2"></i>不同类型结石的防治方案</h3>
+              <div class="space-y-3">
+                <div class="p-3 bg-sky-50 rounded-lg border-l-4 border-sky-500">
+                  <div class="font-bold text-sky-700 mb-1">草酸钙结石</div>
+                  <div class="text-sm text-gray-600">枸橼酸盐9-12g/d + 噻嗪类利尿剂 + 限制草酸</div>
+                </div>
+                <div class="p-3 bg-purple-50 rounded-lg border-l-4 border-purple-500">
+                  <div class="font-bold text-purple-700 mb-1">尿酸结石</div>
+                  <div class="text-sm text-gray-600">碱化尿液pH6.5-7.0 + 枸橼酸钾 + 别嘌醇</div>
+                </div>
+                <div class="p-3 bg-orange-50 rounded-lg border-l-4 border-orange-500">
+                  <div class="font-bold text-orange-700 mb-1">胱氨酸结石</div>
+                  <div class="text-sm text-gray-600">大量饮水&gt;3.5L + 碱化尿液pH&gt;7.5 + 硫普罗宁</div>
+                </div>
+                <div class="p-3 bg-red-50 rounded-lg border-l-4 border-red-500">
+                  <div class="font-bold text-red-700 mb-1">感染性结石</div>
+                  <div class="text-sm text-gray-600">彻底清石 + 抗感染 + 酸化尿液pH&lt;6.2</div>
+                </div>
+                <div class="p-3 bg-teal-50 rounded-lg border-l-4 border-teal-500">
+                  <div class="font-bold text-teal-700 mb-1">磷酸钙结石</div>
+                  <div class="text-sm text-gray-600">噻嗪类利尿剂 + 排查甲旁亢/肾小管酸中毒</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-5 text-white">
+              <h3 class="text-lg font-bold mb-4"><i class="fas fa-chart-line mr-2"></i>临床意义</h3>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <span class="font-bold">1</span>
+                  </div>
+                  <div>
+                    <div class="font-medium">准确判断结石危险因素</div>
+                    <div class="text-sm opacity-90">明确代谢异常类型和程度</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <span class="font-bold">2</span>
+                  </div>
+                  <div>
+                    <div class="font-medium">显著降低复发率</div>
+                    <div class="text-sm opacity-90">从50-90%降至10-15%</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <span class="font-bold">3</span>
+                  </div>
+                  <div>
+                    <div class="font-medium">指导个体化治疗</div>
+                    <div class="text-sm opacity-90">针对性药物和饮食干预</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <span class="font-bold">4</span>
+                  </div>
+                  <div>
+                    <div class="font-medium">早期筛查预警</div>
+                    <div class="text-sm opacity-90">发现潜在高风险人群</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 card-shadow">
+              <h3 class="text-lg font-bold text-gray-700 mb-3"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>专家建议</h3>
+              <div class="bg-yellow-50 rounded-lg p-4 border border-yellow-100">
+                <p class="text-gray-700 text-sm leading-relaxed">
+                  <i class="fas fa-quote-left text-yellow-400 mr-2"></i>
+                  建议每年至少做一次尿液结石危险因素检测或结石标本成分分析，以实现结石病的精准防治和复发预防。
+                  <i class="fas fa-quote-right text-yellow-400 ml-2"></i>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 开展项目的综合效益 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-5">
+          <h2 class="text-3xl font-bold text-gray-800">开展项目的综合效益</h2>
+          <p class="text-gray-500 mt-1">对医院和科室的多维度价值</p>
+        </div>
+        <div class="flex-1 grid grid-cols-3 gap-4">
+          <div class="bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl p-5 text-white">
+            <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center mb-4">
+              <i class="fas fa-hospital text-3xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-3">提升诊疗水平</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check mt-1"></i>
+                <span>完善结石病诊疗体系</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check mt-1"></i>
+                <span>实现精准病因诊断</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check mt-1"></i>
+                <span>提供个体化防治方案</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check mt-1"></i>
+                <span>符合国内外指南要求</span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl p-5 text-white">
+            <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center mb-4">
+              <i class="fas fa-users text-3xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-3">提高患者满意度</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check mt-1"></i>
+                <span>显著降低复发率</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check mt-1"></i>
+                <span>减少反复手术痛苦</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check mt-1"></i>
+                <span>节约医疗费用</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check mt-1"></i>
+                <span>专业营养咨询服务</span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl p-5 text-white">
+            <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center mb-4">
+              <i class="fas fa-award text-3xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-3">增强品牌影响力</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check mt-1"></i>
+                <span>树立专科特色优势</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check mt-1"></i>
+                <span>吸引更多患者就诊</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check mt-1"></i>
+                <span>提升科室学术地位</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-check mt-1"></i>
+                <span>获得持续经济效益</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-4 grid grid-cols-4 gap-4">
+          <div class="bg-white rounded-xl p-4 card-shadow text-center">
+            <div class="text-3xl font-bold text-sky-600 mb-1">100+</div>
+            <div class="text-sm text-gray-500">合作三甲医院</div>
+          </div>
+          <div class="bg-white rounded-xl p-4 card-shadow text-center">
+            <div class="text-3xl font-bold text-teal-600 mb-1">16省</div>
+            <div class="text-sm text-gray-500">市场覆盖范围</div>
+          </div>
+          <div class="bg-white rounded-xl p-4 card-shadow text-center">
+            <div class="text-3xl font-bold text-purple-600 mb-1">ISO</div>
+            <div class="text-sm text-gray-500">15189认证</div>
+          </div>
+          <div class="bg-white rounded-xl p-4 card-shadow text-center">
+            <div class="text-3xl font-bold text-orange-600 mb-1">24h</div>
+            <div class="text-sm text-gray-500">专业咨询服务</div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- 章节页：临床应用案例 -->
+    <div class="ppt-slide !bg-gradient-to-br !from-violet-900 !via-violet-800 !to-purple-900" type="chapter">
+      <div class="chapter-number">05</div>
+      <div class="h-full flex flex-col justify-center relative z-10">
+        <div class="mb-4">
+          <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">
+            CHAPTER 05
+          </span>
+        </div>
+        <h2 class="text-5xl font-bold text-white mb-4">临床应用案例</h2>
+        <p class="text-2xl text-violet-100">真实案例展示项目临床价值</p>
+        <div class="mt-12 flex gap-8">
+          <div class="text-center">
+            <div class="text-5xl font-bold text-white mb-2">硅酸盐结石</div>
+            <div class="text-violet-200">药物引发</div>
+          </div>
+          <div class="text-center">
+            <div class="text-5xl font-bold text-white mb-2">磷酸氢钙结石</div>
+            <div class="text-violet-200">甲旁腺异常</div>
+          </div>
+          <div class="text-center">
+            <div class="text-5xl font-bold text-white mb-2">尿酸结石</div>
+            <div class="text-violet-200">代谢异常</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 典型案例分析 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-5">
+          <h2 class="text-3xl font-bold text-gray-800">典型案例分析</h2>
+          <p class="text-gray-500 mt-1">代谢评估如何帮助明确病因、指导治疗、预防复发</p>
+        </div>
+        <div class="flex-1 grid grid-cols-3 gap-4">
+          <div class="bg-white rounded-xl p-4 card-shadow border-t-4 border-sky-500">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center">
+                <i class="fas fa-child text-sky-600"></i>
+              </div>
+              <div>
+                <div class="font-bold text-gray-700">案例一</div>
+                <div class="text-sm text-gray-500">浙江丽水8岁女童</div>
+              </div>
+            </div>
+            <div class="space-y-2 text-sm">
+              <div class="p-2 bg-red-50 rounded-lg">
+                <div class="font-medium text-red-700 mb-1">临床症状</div>
+                <div class="text-gray-600">反复血尿，剧烈疼痛，定期排出小结石</div>
+              </div>
+              <div class="p-2 bg-gray-50 rounded-lg">
+                <div class="font-medium text-gray-700 mb-1">检查结果</div>
+                <div class="text-gray-600">X光B超显示双肾多发性结石</div>
+              </div>
+              <div class="p-2 bg-orange-50 rounded-lg">
+                <div class="font-medium text-orange-700 mb-1">治疗经过</div>
+                <div class="text-gray-600">输尿管软镜手术失败（输尿管太细）</div>
+              </div>
+              <div class="p-2 bg-sky-50 rounded-lg">
+                <div class="font-medium text-sky-700 mb-1">结石分析</div>
+                <div class="text-gray-600"><span class="font-bold">硅酸盐结石</span>（药物引发）</div>
+              </div>
+              <div class="p-2 bg-green-50 rounded-lg">
+                <div class="font-medium text-green-700 mb-1">病因判断</div>
+                <div class="text-gray-600">长期服用含硅药物</div>
+              </div>
+              <div class="p-2 bg-green-100 rounded-lg border border-green-300">
+                <div class="font-medium text-green-700 mb-1">治疗效果</div>
+                <div class="text-gray-600 font-bold">停药后6个月结石自然排出</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-4 card-shadow border-t-4 border-teal-500">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center">
+                <i class="fas fa-user text-teal-600"></i>
+              </div>
+              <div>
+                <div class="font-bold text-gray-700">案例二</div>
+                <div class="text-sm text-gray-500">东海舰队某战士28岁</div>
+              </div>
+            </div>
+            <div class="space-y-2 text-sm">
+              <div class="p-2 bg-red-50 rounded-lg">
+                <div class="font-medium text-red-700 mb-1">临床症状</div>
+                <div class="text-gray-600">结石反复发作，6年病史，肉眼血尿、肾积水</div>
+              </div>
+              <div class="p-2 bg-gray-50 rounded-lg">
+                <div class="font-medium text-gray-700 mb-1">检查结果</div>
+                <div class="text-gray-600">右侧输尿管上段1.0*1.8CM结石</div>
+              </div>
+              <div class="p-2 bg-sky-50 rounded-lg">
+                <div class="font-medium text-sky-700 mb-1">结石分析</div>
+                <div class="text-gray-600"><span class="font-bold">磷酸氢钙结石</span></div>
+              </div>
+              <div class="p-2 bg-purple-50 rounded-lg">
+                <div class="font-medium text-purple-700 mb-1">尿液检测</div>
+                <div class="text-gray-600">尿磷、钙离子超正常值<span class="font-bold text-red-600">5倍</span></div>
+              </div>
+              <div class="p-2 bg-orange-50 rounded-lg">
+                <div class="font-medium text-orange-700 mb-1">病因判断</div>
+                <div class="text-gray-600">甲状旁腺功能异常，B超发现良性肿瘤</div>
+              </div>
+              <div class="p-2 bg-green-100 rounded-lg border border-green-300">
+                <div class="font-medium text-green-700 mb-1">治疗效果</div>
+                <div class="text-gray-600 font-bold">甲状旁腺切除术后至今未复发</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-4 card-shadow border-t-4 border-purple-500">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
+                <i class="fas fa-user-md text-purple-600"></i>
+              </div>
+              <div>
+                <div class="font-bold text-gray-700">案例三</div>
+                <div class="text-sm text-gray-500">宁波某院肾内科医生42岁</div>
+              </div>
+            </div>
+            <div class="space-y-2 text-sm">
+              <div class="p-2 bg-red-50 rounded-lg">
+                <div class="font-medium text-red-700 mb-1">临床症状</div>
+                <div class="text-gray-600">突出性腰腹部剧烈疼痛</div>
+              </div>
+              <div class="p-2 bg-gray-50 rounded-lg">
+                <div class="font-medium text-gray-700 mb-1">检查结果</div>
+                <div class="text-gray-600">右肾结石0.7*0.8CM，0.5*0.7CM</div>
+              </div>
+              <div class="p-2 bg-orange-50 rounded-lg">
+                <div class="font-medium text-orange-700 mb-1">治疗意愿</div>
+                <div class="text-gray-600">首次发作，想保守治疗</div>
+              </div>
+              <div class="p-2 bg-purple-50 rounded-lg">
+                <div class="font-medium text-purple-700 mb-1">尿液检测</div>
+                <div class="text-gray-600"><span class="font-bold">高尿酸尿</span> + <span class="font-bold">低枸橼酸尿</span></div>
+              </div>
+              <div class="p-2 bg-sky-50 rounded-lg">
+                <div class="font-medium text-sky-700 mb-1">病因判断</div>
+                <div class="text-gray-600">过量摄入嘌呤食物，尿酸代谢异常</div>
+              </div>
+              <div class="p-2 bg-green-100 rounded-lg border border-green-300">
+                <div class="font-medium text-green-700 mb-1">治疗效果</div>
+                <div class="text-gray-600 font-bold">枸橼酸氢钾钠治疗2个月后结石消失，避免手术</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 bg-gradient-to-r from-sky-500 to-blue-600 rounded-xl p-4 text-white">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <i class="fas fa-lightbulb text-3xl"></i>
+              <div>
+                <div class="font-bold text-lg">案例启示</div>
+                <div class="text-sm opacity-90">代谢评估帮助明确病因，指导个体化治疗，显著降低复发率</div>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="text-3xl font-bold">95%</div>
+              <div class="text-sm opacity-90">病因明确率</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 章节页：合作展望 -->
+    <div class="ppt-slide !bg-gradient-to-br !from-emerald-900 !via-emerald-800 !to-teal-900" type="chapter">
+      <div class="chapter-number">06</div>
+      <div class="h-full flex flex-col justify-center relative z-10">
+        <div class="mb-4">
+          <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">
+            CHAPTER 06
+          </span>
+        </div>
+        <h2 class="text-5xl font-bold text-white mb-4">合作展望</h2>
+        <p class="text-2xl text-emerald-100">携手共建结石病精准防治体系</p>
+        <div class="mt-12 flex gap-8">
+          <div class="text-center">
+            <div class="text-5xl font-bold text-white mb-2">100+</div>
+            <div class="text-emerald-200">合作医院</div>
+          </div>
+          <div class="text-center">
+            <div class="text-5xl font-bold text-white mb-2">16省</div>
+            <div class="text-emerald-200">覆盖范围</div>
+          </div>
+          <div class="text-center">
+            <div class="text-5xl font-bold text-white mb-2">24h</div>
+            <div class="text-emerald-200">专业服务</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 合作模式与服务支持 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-5">
+          <h2 class="text-3xl font-bold text-gray-800">合作模式与服务支持</h2>
+          <p class="text-gray-500 mt-1">全方位支持助力科室开展结石病精准防治</p>
+        </div>
+        <div class="flex-1 grid grid-cols-2 gap-5">
+          <div class="space-y-4">
+            <div class="bg-white rounded-xl p-5 card-shadow">
+              <h3 class="text-lg font-bold text-gray-700 mb-4"><i class="fas fa-handshake text-sky-500 mr-2"></i>合作模式</h3>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3 p-3 bg-sky-50 rounded-lg">
+                  <div class="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center flex-shrink-0 font-bold">1</div>
+                  <div>
+                    <div class="font-medium text-gray-700">检测服务合作</div>
+                    <div class="text-sm text-gray-500">提供结石成分分析和尿液风险因子检测服务</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 bg-teal-50 rounded-lg">
+                  <div class="w-10 h-10 rounded-full bg-teal-500 text-white flex items-center justify-center flex-shrink-0 font-bold">2</div>
+                  <div>
+                    <div class="font-medium text-gray-700">技术支持合作</div>
+                    <div class="text-sm text-gray-500">提供检测技术培训、质控支持和报告解读</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-3 bg-purple-50 rounded-lg">
+                  <div class="w-10 h-10 rounded-full bg-purple-500 text-white flex items-center justify-center flex-shrink-0 font-bold">3</div>
+                  <div>
+                    <div class="font-medium text-gray-700">科研合作</div>
+                    <div class="text-sm text-gray-500">共同开展结石病临床研究和学术交流</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl p-5 text-white">
+              <h3 class="text-lg font-bold mb-3"><i class="fas fa-map-marked-alt mr-2"></i>已开展范围</h3>
+              <div class="grid grid-cols-4 gap-2 text-sm">
+                <div class="p-2 bg-white/20 rounded text-center">上海市</div>
+                <div class="p-2 bg-white/20 rounded text-center">浙江省</div>
+                <div class="p-2 bg-white/20 rounded text-center">江苏省</div>
+                <div class="p-2 bg-white/20 rounded text-center">安徽省</div>
+                <div class="p-2 bg-white/20 rounded text-center">福建省</div>
+                <div class="p-2 bg-white/20 rounded text-center">江西省</div>
+                <div class="p-2 bg-white/20 rounded text-center">山东省</div>
+                <div class="p-2 bg-white/20 rounded text-center">河南省</div>
+                <div class="p-2 bg-white/20 rounded text-center">湖北省</div>
+                <div class="p-2 bg-white/20 rounded text-center">湖南省</div>
+                <div class="p-2 bg-white/20 rounded text-center">广东省</div>
+                <div class="p-2 bg-white/20 rounded text-center">河北省</div>
+                <div class="p-2 bg-white/20 rounded text-center">海南省</div>
+                <div class="p-2 bg-white/20 rounded text-center">四川省</div>
+                <div class="p-2 bg-white/20 rounded text-center">辽宁省</div>
+                <div class="p-2 bg-white/20 rounded text-center">内蒙古</div>
+              </div>
+              <div class="mt-3 text-center text-sm opacity-90">
+                覆盖16个省，1个直辖市，100+三甲医院
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-white rounded-xl p-5 card-shadow">
+              <h3 class="text-lg font-bold text-gray-700 mb-4"><i class="fas fa-concierge-bell text-teal-500 mr-2"></i>服务支持</h3>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="p-3 bg-gray-50 rounded-lg text-center">
+                  <i class="fas fa-truck text-sky-500 text-2xl mb-2"></i>
+                  <div class="font-medium text-gray-700">标本运输</div>
+                  <div class="text-sm text-gray-500">冷链物流配送</div>
+                </div>
+                <div class="p-3 bg-gray-50 rounded-lg text-center">
+                  <i class="fas fa-file-alt text-teal-500 text-2xl mb-2"></i>
+                  <div class="font-medium text-gray-700">报告解读</div>
+                  <div class="text-sm text-gray-500">专业报告分析</div>
+                </div>
+                <div class="p-3 bg-gray-50 rounded-lg text-center">
+                  <i class="fas fa-user-tie text-purple-500 text-2xl mb-2"></i>
+                  <div class="font-medium text-gray-700">营养咨询</div>
+                  <div class="text-sm text-gray-500">专业营养师指导</div>
+                </div>
+                <div class="p-3 bg-gray-50 rounded-lg text-center">
+                  <i class="fas fa-phone-alt text-orange-500 text-2xl mb-2"></i>
+                  <div class="font-medium text-gray-700">400热线</div>
+                  <div class="text-sm text-gray-500">24小时咨询服务</div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 card-shadow">
+              <h3 class="text-lg font-bold text-gray-700 mb-4"><i class="fas fa-certificate text-orange-500 mr-2"></i>资质认证</h3>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 p-3 bg-orange-50 rounded-lg">
+                  <i class="fas fa-award text-orange-500 text-xl"></i>
+                  <div>
+                    <div class="font-medium text-gray-700">ISO15189医学实验室认证</div>
+                    <div class="text-sm text-gray-500">国际标准化质量管理体系</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
+                  <i class="fas fa-microscope text-blue-500 text-xl"></i>
+                  <div>
+                    <div class="font-medium text-gray-700">美国梅奥实验室指定设备</div>
+                    <div class="text-sm text-gray-500">傅立叶变换红外光谱技术</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
+                  <i class="fas fa-users-cog text-green-500 text-xl"></i>
+                  <div>
+                    <div class="font-medium text-gray-700">专业检测团队</div>
+                    <div class="text-sm text-gray-500">定期室间质控及对比</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 签约医院名单 -->
+    <div class="ppt-slide" type="content">
+      <div class="h-full flex flex-col">
+        <div class="mb-5">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="px-3 py-1 bg-gradient-to-r from-sky-500 to-blue-500 text-white text-sm rounded-full font-bold">
+              <i class="fas fa-hospital mr-1"></i>合作医院
+            </div>
+            <h2 class="text-3xl font-bold text-gray-800">已签约三甲医院名单</h2>
+          </div>
+          <p class="text-gray-500 mt-1">以下医院已与汉库医学签订结石成分委外检测服务合作协议</p>
+        </div>
+        <div class="flex-1">
+          <div class="grid grid-cols-4 gap-4">
+            <!-- 宁波地区 -->
+            <div class="bg-gradient-to-br from-sky-50 to-white rounded-xl p-4 border border-sky-100">
+              <div class="flex items-center gap-2 mb-3">
+                <div class="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center">
+                  <i class="fas fa-map-marker-alt text-white text-sm"></i>
+                </div>
+                <h4 class="font-bold text-sky-700">宁波地区</h4>
+              </div>
+              <div class="space-y-2">
+                <div class="p-2 bg-white rounded-lg shadow-sm border-l-3 border-sky-400">
+                  <div class="font-medium text-gray-700 text-sm">宁波北仑人民医院</div>
+                </div>
+                <div class="p-2 bg-white rounded-lg shadow-sm border-l-3 border-sky-400">
+                  <div class="font-medium text-gray-700 text-sm">宁波大学附属第一医院</div>
+                </div>
+                <div class="p-2 bg-white rounded-lg shadow-sm border-l-3 border-sky-400">
+                  <div class="font-medium text-gray-700 text-sm">宁波大学附属人民医院</div>
+                  <div class="text-xs text-gray-400">(鄞州人民)</div>
+                </div>
+                <div class="p-2 bg-white rounded-lg shadow-sm border-l-3 border-sky-400">
+                  <div class="font-medium text-gray-700 text-sm">宁波市第九医院</div>
+                </div>
+                <div class="p-2 bg-white rounded-lg shadow-sm border-l-3 border-sky-400">
+                  <div class="font-medium text-gray-700 text-sm">宁波市医疗中心李惠利医院</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 青岛地区 -->
+            <div class="bg-gradient-to-br from-blue-50 to-white rounded-xl p-4 border border-blue-100">
+              <div class="flex items-center gap-2 mb-3">
+                <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
+                  <i class="fas fa-map-marker-alt text-white text-sm"></i>
+                </div>
+                <h4 class="font-bold text-blue-700">青岛地区</h4>
+              </div>
+              <div class="space-y-2">
+                <div class="p-2 bg-white rounded-lg shadow-sm border-l-3 border-blue-400">
+                  <div class="font-medium text-gray-700 text-sm">青岛市中医医院</div>
+                  <div class="text-xs text-gray-400">(市海慈医院)</div>
+                </div>
+              </div>
+              <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                <div class="text-xs text-blue-600 text-center">
+                  <i class="fas fa-info-circle mr-1"></i>持续拓展中
+                </div>
+              </div>
+            </div>
+            
+            <!-- 台州地区 -->
+            <div class="bg-gradient-to-br from-teal-50 to-white rounded-xl p-4 border border-teal-100">
+              <div class="flex items-center gap-2 mb-3">
+                <div class="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center">
+                  <i class="fas fa-map-marker-alt text-white text-sm"></i>
+                </div>
+                <h4 class="font-bold text-teal-700">台州地区</h4>
+              </div>
+              <div class="space-y-2">
+                <div class="p-2 bg-white rounded-lg shadow-sm border-l-3 border-teal-400">
+                  <div class="font-medium text-gray-700 text-sm">台州市第一人民医院</div>
+                </div>
+              </div>
+              <div class="mt-4 p-3 bg-teal-50 rounded-lg">
+                <div class="text-xs text-teal-600 text-center">
+                  <i class="fas fa-info-circle mr-1"></i>持续拓展中
+                </div>
+              </div>
+            </div>
+            
+            <!-- 杭州地区 -->
+            <div class="bg-gradient-to-br from-purple-50 to-white rounded-xl p-4 border border-purple-100">
+              <div class="flex items-center gap-2 mb-3">
+                <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center">
+                  <i class="fas fa-map-marker-alt text-white text-sm"></i>
+                </div>
+                <h4 class="font-bold text-purple-700">杭州地区</h4>
+              </div>
+              <div class="space-y-2">
+                <div class="p-2 bg-white rounded-lg shadow-sm border-l-3 border-purple-400">
+                  <div class="font-medium text-gray-700 text-sm">浙江省中医院</div>
+                </div>
+                <div class="p-2 bg-white rounded-lg shadow-sm border-l-3 border-purple-400">
+                  <div class="font-medium text-gray-700 text-sm">浙江萧山医院</div>
+                </div>
+                <div class="p-2 bg-white rounded-lg shadow-sm border-l-3 border-purple-400">
+                  <div class="font-medium text-gray-700 text-sm">杭州市第九人民医院</div>
+                </div>
+                <div class="p-2 bg-white rounded-lg shadow-sm border-l-3 border-purple-400">
+                  <div class="font-medium text-gray-700 text-sm">杭州新华医院</div>
+                </div>
+                <div class="p-2 bg-white rounded-lg shadow-sm border-l-3 border-purple-400">
+                  <div class="font-medium text-gray-700 text-sm">同创医学</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 底部统计 -->
+          <div class="mt-5 grid grid-cols-4 gap-4">
+            <div class="bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl p-4 text-white text-center">
+              <div class="text-3xl font-bold mb-1">12</div>
+              <div class="text-sm opacity-90">签约医院数量</div>
+            </div>
+            <div class="bg-gradient-to-br from-teal-500 to-emerald-600 rounded-xl p-4 text-white text-center">
+              <div class="text-3xl font-bold mb-1">5</div>
+              <div class="text-sm opacity-90">覆盖城市</div>
+            </div>
+            <div class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl p-4 text-white text-center">
+              <div class="text-3xl font-bold mb-1">100%</div>
+              <div class="text-sm opacity-90">三甲医院</div>
+            </div>
+            <div class="bg-gradient-to-br from-orange-500 to-red-500 rounded-xl p-4 text-white text-center">
+              <div class="text-3xl font-bold mb-1">持续</div>
+              <div class="text-sm opacity-90">拓展中</div>
+            </div>
+          </div>
+          
+          <!-- 合作说明 -->
+          <div class="mt-4 bg-amber-50 rounded-xl p-4 border border-amber-100">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-handshake text-amber-500 text-xl"></i>
+              <div>
+                <div class="font-bold text-amber-700">合作模式</div>
+                <div class="text-sm text-gray-600">提供结石成分分析和尿液风险因子检测服务，支持医院建立结石病精准防治体系</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 结束页 -->
+    <div class="ppt-slide !bg-gradient-to-br !from-sky-900 !via-sky-800 !to-blue-900" type="final">
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-sky-400 rounded-full blur-3xl"></div>
+      </div>
+      <div class="relative z-10 h-full flex flex-col justify-center items-center text-center">
+        <div class="mb-8">
+          <i class="fas fa-shield-virus text-8xl text-white/30"></i>
+        </div>
+        <h2 class="text-5xl font-bold text-white mb-6">预防结石</h2>
+        <h3 class="text-4xl font-bold text-sky-200 mb-8">从精准检测识别开始</h3>
+        <p class="text-xl text-white/80 max-w-3xl mb-12 leading-relaxed">
+          尿液结石风险因子评估——让每一例结石患者都能得到精准的病因诊断和个体化防治
+        </p>
+        <div class="grid grid-cols-3 gap-8 mb-12">
+          <div class="text-center">
+            <div class="text-4xl font-bold text-white mb-2">95%</div>
+            <div class="text-sky-200">病因明确率</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-white mb-2">10-15%</div>
+            <div class="text-sky-200">干预后复发率</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-white mb-2">60-80%</div>
+            <div class="text-sky-200">复发率降低</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-8 text-white/70">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-hospital"></i>
+            <span>杭州汉库医学检验所</span>
+          </div>
+          <div class="w-px h-6 bg-white/30"></div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-microscope"></i>
+            <span>汉库医学检验所</span>
+          </div>
+          <div class="w-px h-6 bg-white/30"></div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-phone"></i>
+            <span>400服务热线</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
